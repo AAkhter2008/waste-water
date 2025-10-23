@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Water Management Model</title>
+    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN --><script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Firebase SDKs - These are now completely removed --><script type="module">
+        // --- Wait for DOM to be ready ---
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- 1. Icon Initialization ---
+            try {
+                lucide.createIcons();
+            } catch (e) {
+                console.error("Lucide icons failed to load.", e);
+            }
+        });
+    </script>
+
+    <!-- Custom Styles & Animations --><style>
+        /* Use Inter font */
+        html {
+            font-family: 'Inter', sans-serif;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+
+        /* --- NEW Simple CSS Fade-in Animation --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Apply a simple fade-in to all main sections */
+        .fade-in-section {
+            /* All sections will just fade in */
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        /* Apply a staggered fade-in + slide-up for hero text */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            opacity: 0; /* Start hidden */
+            animation: fadeInUp 0.7s ease-out forwards;
+        }
+        
+        /* Simple delay classes */
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+        /* --- GOOGLE FORM IFRAME STYLES --- */
+        .google-form-embed {
+            max-width: 800px; /* Make it wider */
+            width: 100%;     /* Ensure it's responsive */
+            height: 1000px;  /* Adjust height as needed */
+            margin: 0 auto;  /* Center the block */
+            border-radius: 1rem; /* Match the shadow-2xl for rounded corners */
+            overflow: hidden; /* Ensures iframe content respects border-radius */
+        }
+
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Header --><header class="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-blue-600">
+                <i data-lucide="droplets" class="inline-block -mt-1"></i>
+                EcoWater Project
+            </a>
+            <div class="space-x-6 hidden md:block">
+                <a href="#about" class="text-slate-600 hover:text-blue-600 transition-colors">About</a>
+                <a href="#features" class="text-slate-600 hover:text-blue-600 transition-colors">Features</a>
+                <a href="#gallery" class="text-slate-600 hover:text-blue-600 transition-colors">Gallery</a>
+                <a href="#feedback" class="bg-blue-600 text-white px-4 py-2 rounded-full font-medium hover:bg-blue-700 transition-all transform hover:scale-105">Give Feedback</a>
+            </div>
+            <button class="md:hidden text-slate-700">
+                <i data-lucide="menu"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content --><main>
+        <!-- Hero Section --><section class="relative min-h-[70vh] md:min-h-[80vh] flex items-center justify-center text-center px-6 py-20 overflow-hidden">
+            <!-- Background Image --><div class="absolute inset-0 z-0">
+                <img src="https://placehold.co/1920x1080/a0deff/333333?text=Clean+Water" 
+                     onerror="this.src='https://placehold.co/1920x1080/a0deff/333333?text=Clean+Water'"
+                     alt="Clean water background" 
+                     class="w-full h-full object-cover opacity-30">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-50 via-slate-50/80 to-transparent"></div>
+            </div>
+            
+            <div class="relative z-10 max-w-3xl">
+                <!-- Added animation classes here --><h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 fade-in-up">
+                    A New Model for
+                    <span class="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">Waste Water Management</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-600 mb-10 fade-in-up delay-1">
+                    Showcasing an innovative, sustainable, and cost-effective solution for treating and reusing water.
+                </p>
+                <div class="flex gap-4 justify-center fade-in-up delay-2">
+                    <a href="#feedback" class="bg-blue-600 text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg">Give Feedback</a>
+                    <a href="#about" class="bg-white text-slate-700 px-8 py-3 rounded-full font-bold text-lg hover:bg-slate-100 transition-all transform hover:scale-105 shadow-lg border border-slate-200">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About the Project Section --><section id="about" class="py-24 bg-white fade-in-section">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-blue-600 font-semibold uppercase">The Project</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-6">What is this Model?</h2>
+                    <p class="text-slate-600 text-lg mb-4">
+                        This project is a functional, scaled model demonstrating a multi-stage process for waste water treatment. It's designed to be eco-friendly, efficient, and adaptable for various scales, from a small community to industrial applications.
+                    </p>
+                    <p class="text-slate-600 text-lg">
+                        The core idea is to not just "dispose" of water, but to "renew" it. By simulating natural filtration processes combined with modern technology, this model proves that sustainable water management is within our reach.
+                    </p>
+                </div>
+                <div>
+                    <img src="https://placehold.co/600x400/d1eaff/333333?text=Photo+of+the+Model" 
+                         onerror="this.src='https://placehold.co/600x400/d1eaff/333333?text=Project+Model'"
+                         alt="Photo of the waste water management model"
+                         class="rounded-2xl shadow-2xl w-full h-auto object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- Features / How It Works Section --><section id="features" class="py-24 bg-slate-50 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto">
+                    <span class="text-blue-600 font-semibold uppercase">How It Works</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-12">A Simple 3-Stage Process</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Feature Card 1 --><div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
+                        <i data-lucide="filter" class="w-12 h-12 text-blue-600 mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-3">1. Primary Filtration</h3>
+                        <p class="text-slate-600">
+                            Removes large solids and debris through physical screening and sedimentation tanks. This initial step prepares the water for finer, more complex treatment.
+                        </p>
+                    </div>
+                    <!-- Feature Card 2 --><div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
+                        <i data-lucide="flask-conical" class="w-12 h-12 text-green-500 mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-3">2. Biological Treatment</h3>
+                        <p class="text-slate-600">
+                            Uses beneficial microorganisms to break down dissolved organic matter. This natural process effectively "digests" pollutants, cleaning the water.
+                        </p>
+                    </div>
+                    <!-- Feature Card 3 --><div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
+                        <i data-lucide="recycle" class="w-12 h-12 text-blue-600 mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-3">3. Tertiary & Reuse</h3>
+                        <p class="text-slate-600">
+                            The final stage involves disinfection (e.g., UV light) and advanced filtration, producing clean, safe water ready for irrigation, industrial use, or return to the environment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section --><section id="gallery" class="py-24 bg-white fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto">
+                    <span class="text-blue-600 font-semibold uppercase">Gallery</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-12">See the Model in Action</h2>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                    <div>
+                        <img src="https://placehold.co/600x400/e0f0ff/333333?text=Model+Overview" 
+                             onerror="this.src='https://placehold.co/600x400/e0f0ff/333333?text=Model+Overview'"
+                             alt="Model Overview" class="rounded-lg shadow-md w-full h-full object-cover">
+                    </div>
+                    <div class="col-span-2 row-span-2">
+                        <img src="https://placehold.co/800x800/d1eaff/333333?text=Main+Filtration+Tank" 
+                             onerror="this.src='https://placehold.co/800x800/d1eaff/333333?text=Main+Filtration+Tank'"
+                             alt="Main Filtration Tank" class="rounded-lg shadow-md w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <img src="https://placehold.co/600x400/e0f0ff/333333?text=Bio-Reactor" 
+                             onerror="this.src='https://placehold.co/600x400/e0f0ff/333333?text=Bio-Reactor'"
+                             alt="Bio-Reactor" class="rounded-lg shadow-md w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <img src="https://placehold.co/600x400/e0f0ff/333333?text=Clean+Water+Output" 
+                             onerror="this.src='https://placehold.co/600x400/e0f0ff/333333?text=Clean+Water+Output'"
+                             alt="Clean Water Output" class="rounded-lg shadow-md w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback Section --><section id="feedback" class="py-24 bg-slate-50 fade-in-section">
+            <div id="feedback-section" class="container mx-auto px-6 max-w-2xl">
+                <div class="text-center">
+                    <span class="text-blue-600 font-semibold uppercase">Review</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-6">We Value Your Feedback!</h2>
+                    <p class="text-lg text-slate-600 mb-10">
+                        Please let us know what you think of the project. All reviews help in improving this model.
+                    </p>
+                </div>
+                
+                <!-- --- NEW GOOGLE FORM EMBED --- --><div class="google-form-embed bg-white shadow-2xl">
+                    <iframe 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSep34cce8h_S2GSdPWVxqHdeeQGIODfYknwcw6yxHFfa5_uAA/viewform?embedded=true" 
+                        class="w-full h-full" 
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0">
+                        Loading…
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer --><footer class="bg-slate-800 text-slate-400 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025. A project by your brother.</p>
+            <p class="text-sm mt-2">Website built to showcase this innovative model.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
